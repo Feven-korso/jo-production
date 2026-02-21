@@ -103,7 +103,7 @@ export default function Portfolio() {
                             <h3>Portfolio Coming Soon</h3>
                             <p>
                                 Add your images to the{' '}
-                                <code>public/images</code> folder and they will appear here automatically.
+                                <code>src/assets/images</code> folder and they will appear here automatically.
                             </p>
                         </div>
                     )}

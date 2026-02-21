@@ -29,7 +29,7 @@ export function useImageLoader(): { images: ImageEntry[]; loading: boolean } {
                 // Vite build-time glob — discovers every image in /public/images/
                 // The ?url query gives us the resolved public URL for each file.
                 const modules = import.meta.glob<string>(
-                    '/public/images/*.{png,jpg,jpeg,webp,gif,svg,avif,PNG,JPG,JPEG,WEBP}',
+                    '../assets/images/*.{png,jpg,jpeg,webp,gif,svg,avif,PNG,JPG,JPEG,WEBP}',
                     { eager: true, query: '?url', import: 'default' }
                 );
 
@@ -37,11 +37,9 @@ export function useImageLoader(): { images: ImageEntry[]; loading: boolean } {
                     .filter(([path]) => !path.endsWith('README.md'))
                     .map(([path, url]) => {
                         const filename = path.split('/').pop() ?? '';
-                        // url is the resolved public URL, but may include '/public' prefix in dev/glob
-                        // We strip it to get the correct serving URL
-                        const src = url.replace(/^\/public/, '');
+                        // url is the resolved hashed URL provided by Vite
                         const name = formatImageName(filename);
-                        return { src, name, filename };
+                        return { src: url, name, filename };
                     })
                     // Sort alphabetically by filename for consistent order
                     .sort((a, b) => a.filename.localeCompare(b.filename));
