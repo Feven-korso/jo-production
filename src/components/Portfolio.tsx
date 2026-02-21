@@ -1,6 +1,7 @@
-import { useState, useCallback, useEffect, useRef } from 'react';
+import { useState, useCallback, useEffect, useRef, useMemo } from 'react';
 import { useScrollReveal } from '../hooks/useScrollReveal';
 import { useImageLoader } from '../hooks/useImageLoader';
+import type { ImageEntry } from '../hooks/useImageLoader';
 import './Portfolio.css';
 
 const PAGE_SIZE = 12; // images per batch
@@ -17,22 +18,35 @@ export default function Portfolio() {
     const handleImageError = useCallback((src: string) => {
         setImageErrors((prev) => new Set(prev).add(src));
     }, []);
-    const validImages = images.filter((img) => !imageErrors.has(img.src));
-    const displayedImages = validImages.slice(0, visibleCount);
+
+    const validImages = useMemo(() =>
+        images.filter((img) => !imageErrors.has(img.src)),
+        [images, imageErrors]
+    );
+
+    const displayedImages = useMemo(() =>
+        validImages.slice(0, visibleCount),
+        [validImages, visibleCount]
+    );
+
     const hasMore = visibleCount < validImages.length;
 
     // Lightbox navigation
     const openLightbox = (index: number) => setLightboxIndex(index);
     const closeLightbox = () => setLightboxIndex(null);
+
     const prevImage = useCallback(() => {
-        setLightboxIndex((i) =>
-            i === null ? null : i === 0 ? validImages.length - 1 : i - 1
-        );
+        setLightboxIndex((prev) => {
+            if (prev === null) return null;
+            return prev === 0 ? validImages.length - 1 : prev - 1;
+        });
     }, [validImages.length]);
+
     const nextImage = useCallback(() => {
-        setLightboxIndex((i) =>
-            i === null ? null : i === validImages.length - 1 ? 0 : i + 1
-        );
+        setLightboxIndex((prev) => {
+            if (prev === null) return null;
+            return prev === validImages.length - 1 ? 0 : prev + 1;
+        });
     }, [validImages.length]);
 
     // Keyboard support for lightbox
@@ -95,7 +109,7 @@ export default function Portfolio() {
                     )}
 
                     {/* Image cards */}
-                    {!loading && displayedImages.map((image, index) => (
+                    {!loading && displayedImages.map((image: ImageEntry, index: number) => (
                         <div
                             key={image.src}
                             className="portfolio__item"

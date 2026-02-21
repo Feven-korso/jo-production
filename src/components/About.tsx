@@ -24,15 +24,12 @@ export default function About() {
                     {/* Image Side */}
                     <div className="about__image-wrap">
                         <div className="about__image-frame">
-                            <div className="about__image-placeholder">
-                                <svg viewBox="0 0 200 200" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                    <rect width="200" height="200" rx="8" fill="#161616" />
-                                    <circle cx="100" cy="75" r="30" stroke="#d4a10a" strokeWidth="2" fill="none" />
-                                    <path d="M60 160c0-22 18-40 40-40s40 18 40 40" stroke="#d4a10a" strokeWidth="2" fill="none" />
-                                    <path d="M150 50l15 10-15 10" stroke="#d4a10a" strokeWidth="1.5" fill="none" opacity="0.5" />
-                                    <circle cx="160" cy="60" r="3" fill="#d4a10a" opacity="0.3" />
-                                </svg>
-                            </div>
+                            <img
+                                src="/images/imge1.jpg"
+                                alt="Jo Production Cinematic Filming"
+                                className="about__image"
+                                loading="lazy"
+                            />
                             <div className="about__image-border" />
                         </div>
                     </div>
