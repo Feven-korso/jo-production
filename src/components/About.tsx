@@ -1,4 +1,5 @@
 import { useScrollReveal } from '../hooks/useScrollReveal';
+import aboutImg from '/public/images/imge1.jpg?url';
 import './About.css';
 
 const STATS = [
@@ -25,7 +26,7 @@ export default function About() {
                     <div className="about__image-wrap">
                         <div className="about__image-frame">
                             <img
-                                src="/images/imge1.jpg"
+                                src={aboutImg.replace(/^\/public/, '')}
                                 alt="Jo Production Cinematic Filming"
                                 className="about__image"
                                 loading="lazy"

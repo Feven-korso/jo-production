@@ -37,9 +37,11 @@ export function useImageLoader(): { images: ImageEntry[]; loading: boolean } {
                     .filter(([path]) => !path.endsWith('README.md'))
                     .map(([path, url]) => {
                         const filename = path.split('/').pop() ?? '';
-                        // url is the resolved public URL provided by Vite
+                        // url is the resolved public URL, but may include '/public' prefix in dev/glob
+                        // We strip it to get the correct serving URL
+                        const src = url.replace(/^\/public/, '');
                         const name = formatImageName(filename);
-                        return { src: url, name, filename };
+                        return { src, name, filename };
                     })
                     // Sort alphabetically by filename for consistent order
                     .sort((a, b) => a.filename.localeCompare(b.filename));
