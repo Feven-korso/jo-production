@@ -1,0 +1,281 @@
+/* ===== SOCIAL MEDIA — Large Icons + Gold Hover ===== */
+
+/* ---- Section wrapper ---- */
+.social {
+    position: relative;
+    padding: var(--section-padding);
+    background: #000000;
+    overflow: hidden;
+}
+
+/* ---- Decorative background rings ---- */
+.social__bg-ring {
+    position: absolute;
+    border-radius: 50%;
+    border: 1px solid rgba(212, 161, 10, 0.06);
+    pointer-events: none;
+}
+
+.social__bg-ring--1 {
+    width: 700px;
+    height: 700px;
+    top: 50%;
+    left: -200px;
+    transform: translateY(-50%);
+}
+
+.social__bg-ring--2 {
+    width: 500px;
+    height: 500px;
+    top: 50%;
+    right: -160px;
+    transform: translateY(-50%);
+}
+
+/* Subtle dot grid pattern */
+.social__bg-dots {
+    position: absolute;
+    inset: 0;
+    background-image: radial-gradient(rgba(212, 161, 10, 0.07) 1px, transparent 1px);
+    background-size: 40px 40px;
+    pointer-events: none;
+}
+
+/* ---- Icon row ---- */
+.social__icons-row {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    gap: clamp(2rem, 5vw, 5rem);
+    flex-wrap: wrap;
+    opacity: 0;
+    transform: translateY(40px);
+    transition: none;
+}
+
+.social--visible .social__icons-row {
+    /* Triggered via child delays for stagger */
+}
+
+/* Each social item */
+.social__item {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1.25rem;
+    text-decoration: none;
+    cursor: pointer;
+
+    /* Stagger fade-in when section is visible */
+    opacity: 0;
+    transform: translateY(40px) scale(0.92);
+    transition:
+        opacity 0.6s cubic-bezier(0.34, 1.56, 0.64, 1) var(--delay, 0s),
+        transform 0.6s cubic-bezier(0.34, 1.56, 0.64, 1) var(--delay, 0s);
+}
+
+.social--visible .social__item {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+}
+
+/* ---- Ripple rings (shown on hover) ---- */
+.social__ring {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 100px;
+    height: 100px;
+    margin-top: -50px;
+    margin-left: -50px;
+    border-radius: 50%;
+    border: 1.5px solid rgba(212, 161, 10, 0);
+    pointer-events: none;
+    transform: scale(1);
+    transition: none;
+}
+
+.social__item:hover .social__ring {
+    animation: social-ripple 1.2s cubic-bezier(0.2, 0.6, 0.4, 1) infinite;
+}
+
+.social__item:hover .social__ring--2 {
+    animation-delay: 0.3s;
+}
+
+.social__item:hover .social__ring--3 {
+    animation-delay: 0.6s;
+}
+
+@keyframes social-ripple {
+    0% {
+        transform: scale(1);
+        border-color: rgba(212, 161, 10, 0.7);
+        opacity: 1;
+    }
+
+    100% {
+        transform: scale(2.8);
+        border-color: rgba(212, 161, 10, 0);
+        opacity: 0;
+    }
+}
+
+/* ---- Icon circle ---- */
+.social__circle {
+    position: relative;
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    background: #0d0d0d;
+    border: 2px solid rgba(212, 161, 10, 0.2);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition:
+        background 0.35s ease,
+        border-color 0.35s ease,
+        box-shadow 0.35s ease,
+        transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+    z-index: 1;
+}
+
+.social__item:hover .social__circle {
+    background: #0d0d0d;
+    border-color: var(--gold);
+    box-shadow:
+        0 0 0 4px rgba(212, 161, 10, 0.15),
+        0 0 30px rgba(212, 161, 10, 0.3),
+        0 0 60px rgba(212, 161, 10, 0.15),
+        inset 0 0 20px rgba(212, 161, 10, 0.05);
+    transform: translateY(-6px) scale(1.08);
+}
+
+/* ---- SVG icon inside circle ---- */
+.social__icon-wrap {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: rgba(163, 163, 163, 0.9);
+    transition: color 0.3s ease, transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+.social__icon-wrap svg {
+    width: 44px;
+    height: 44px;
+}
+
+.social__item:hover .social__icon-wrap {
+    color: var(--gold);
+    transform: scale(1.1);
+}
+
+/* ---- Label below icon ---- */
+.social__label {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.25rem;
+    text-align: center;
+}
+
+.social__name {
+    font-family: var(--font-heading);
+    font-size: 1rem;
+    font-weight: 700;
+    color: var(--text-primary);
+    letter-spacing: 0.04em;
+    transition: color 0.3s ease;
+    text-transform: uppercase;
+}
+
+.social__item:hover .social__name {
+    color: var(--gold);
+}
+
+.social__handle {
+    font-family: var(--font-body);
+    font-size: 0.75rem;
+    color: var(--text-muted);
+    font-weight: 400;
+    letter-spacing: 0.02em;
+    transition: color 0.3s ease;
+}
+
+.social__item:hover .social__handle {
+    color: rgba(212, 161, 10, 0.7);
+}
+
+/* ---- Gold glow burst behind circle ---- */
+.social__glow {
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(212, 161, 10, 0.25) 0%, transparent 70%);
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.4s ease, transform 0.4s ease;
+    z-index: 0;
+    filter: blur(8px);
+}
+
+.social__item:hover .social__glow {
+    opacity: 1;
+    transform: translateX(-50%) scale(1.8);
+}
+
+/* ---- Responsive ---- */
+@media (max-width: 768px) {
+    .social__icons-row {
+        gap: 2.5rem;
+    }
+
+    .social__circle {
+        width: 84px;
+        height: 84px;
+    }
+
+    .social__icon-wrap svg {
+        width: 36px;
+        height: 36px;
+    }
+
+    .social__ring {
+        width: 84px;
+        height: 84px;
+        margin-top: -42px;
+        margin-left: -42px;
+    }
+}
+
+@media (max-width: 480px) {
+    .social__icons-row {
+        gap: 1.8rem;
+    }
+
+    .social__circle {
+        width: 72px;
+        height: 72px;
+    }
+
+    .social__icon-wrap svg {
+        width: 30px;
+        height: 30px;
+    }
+
+    .social__ring {
+        width: 72px;
+        height: 72px;
+        margin-top: -36px;
+        margin-left: -36px;
+    }
+
+    .social__name {
+        font-size: 0.85rem;
+    }
+}

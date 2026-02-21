@@ -1,0 +1,102 @@
+/* ===== SERVICES ===== */
+
+.services {
+    padding: var(--section-padding);
+    background: var(--bg-secondary);
+    position: relative;
+}
+
+.services__grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.5rem;
+    opacity: 0;
+}
+
+.services__grid.fade-in-up {
+    opacity: 1;
+}
+
+.services__card {
+    position: relative;
+    background: var(--bg-card);
+    border: 1px solid var(--border-subtle);
+    border-radius: var(--radius-lg);
+    padding: 2.5rem 2rem;
+    text-align: center;
+    transition: all var(--transition-base);
+    overflow: hidden;
+}
+
+.services__card:hover {
+    border-color: var(--gold-border);
+    transform: translateY(-6px);
+    box-shadow: var(--shadow-card-hover);
+}
+
+.services__card:hover .services__card-glow {
+    opacity: 1;
+}
+
+.services__card-glow {
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 80%;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, var(--gold), transparent);
+    opacity: 0;
+    transition: opacity var(--transition-base);
+}
+
+.services__icon {
+    width: 56px;
+    height: 56px;
+    margin: 0 auto 1.25rem;
+    color: var(--gold);
+    background: rgba(212, 161, 10, 0.08);
+    border-radius: var(--radius-md);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 12px;
+    transition: all var(--transition-base);
+}
+
+.services__card:hover .services__icon {
+    background: rgba(212, 161, 10, 0.15);
+    box-shadow: var(--shadow-gold);
+    transform: scale(1.1);
+}
+
+.services__card-title {
+    font-family: var(--font-heading);
+    font-size: 1.15rem;
+    font-weight: 600;
+    color: var(--text-primary);
+    margin-bottom: 0.75rem;
+}
+
+.services__card-desc {
+    font-size: 0.88rem;
+    color: var(--text-secondary);
+    line-height: 1.7;
+    font-weight: 300;
+}
+
+@media (max-width: 1024px) {
+    .services__grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 600px) {
+    .services__grid {
+        grid-template-columns: 1fr;
+    }
+
+    .services__card {
+        padding: 2rem 1.5rem;
+    }
+}

@@ -1,0 +1,55 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200" fill="none">
+  <!-- Outer gold ring (open at bottom-left — matches the J curve) -->
+  <path
+    d="M100 12
+       a88 88 0 1 1 -62.2 25.8"
+    stroke="#F5C400"
+    stroke-width="14"
+    stroke-linecap="round"
+    fill="none"
+  />
+
+  <!-- Large J letterform (gold fill) -->
+  <!-- Vertical bar -->
+  <rect x="108" y="14" width="28" height="98" rx="6" fill="#F5C400"/>
+  <!-- J curve at bottom -->
+  <path
+    d="M136 100
+       Q136 148 100 152
+       Q72 154 60 136"
+    stroke="#F5C400"
+    stroke-width="28"
+    stroke-linecap="round"
+    fill="none"
+  />
+
+  <!-- Camera aperture / shutter icon (black circle with blades) -->
+  <g transform="translate(72, 88)">
+    <!-- Outer circle -->
+    <circle cx="0" cy="0" r="26" fill="#111111" stroke="#1a1a1a" stroke-width="1"/>
+    <!-- Aperture blades (6-blade shutter) -->
+    <g fill="#000000">
+      <!-- Blade 1 -->
+      <ellipse cx="0" cy="-10" rx="5" ry="9" transform="rotate(0)"  fill="#222"/>
+      <ellipse cx="0" cy="-10" rx="5" ry="9" transform="rotate(60)" fill="#222"/>
+      <ellipse cx="0" cy="-10" rx="5" ry="9" transform="rotate(120)" fill="#222"/>
+      <ellipse cx="0" cy="-10" rx="5" ry="9" transform="rotate(180)" fill="#222"/>
+      <ellipse cx="0" cy="-10" rx="5" ry="9" transform="rotate(240)" fill="#222"/>
+      <ellipse cx="0" cy="-10" rx="5" ry="9" transform="rotate(300)" fill="#222"/>
+    </g>
+    <!-- Inner hexagon hole -->
+    <polygon
+      points="0,-8 6.9,-4 6.9,4 0,8 -6.9,4 -6.9,-4"
+      fill="#111111"
+    />
+    <!-- Aperture ring outline -->
+    <circle cx="0" cy="0" r="26" stroke="#333" stroke-width="2" fill="none"/>
+    <!-- Aperture spokes -->
+    <line x1="0" y1="-26" x2="0" y2="-9"  stroke="#444" stroke-width="1.5"/>
+    <line x1="0" y1="-26" x2="0" y2="-9"  stroke="#444" stroke-width="1.5" transform="rotate(60)"/>
+    <line x1="0" y1="-26" x2="0" y2="-9"  stroke="#444" stroke-width="1.5" transform="rotate(120)"/>
+    <line x1="0" y1="-26" x2="0" y2="-9"  stroke="#444" stroke-width="1.5" transform="rotate(180)"/>
+    <line x1="0" y1="-26" x2="0" y2="-9"  stroke="#444" stroke-width="1.5" transform="rotate(240)"/>
+    <line x1="0" y1="-26" x2="0" y2="-9"  stroke="#444" stroke-width="1.5" transform="rotate(300)"/>
+  </g>
+</svg>
